@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import {LineChart, Line, Tooltip, XAxis, YAxis} from "recharts";
 import moment from "moment";
@@ -11,6 +11,12 @@ import {Tag, Team, Transaction} from "../Data/data";
 
 const BottomStyles = styled.div`
     height: 60%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    .warning{
+        text-align:center;
+    }
 `
 
 type DataEntry = {
@@ -41,15 +47,22 @@ export const Bottom = ()=>{
         }
         return result
     }
-    
     return (
         <BottomStyles>
-             <LineChart width={930} height={320} data={generateData(criteria.transactions)}>
-                <Line type="monotone" dataKey="total" stroke="#8884d8" />
-                <XAxis dataKey="date"/>
-                <YAxis dataKey="total"/>
-                <Tooltip/>
-            </LineChart>
+            {
+                criteria.transactions.length===0?
+                <div className="warning">Data only available in March, April and May
+                <br />
+                 Please select month and click refresh, then add criteria
+                 </div>
+                :
+                <LineChart width={930} height={320} data={generateData(criteria.transactions)}>
+                    <Line type="monotone" dataKey="total" stroke="#8884d8" />
+                    <XAxis dataKey="date"/>
+                    <YAxis dataKey="total"/>
+                    <Tooltip/>
+                </LineChart>
+            }
         </BottomStyles>
     )
 }

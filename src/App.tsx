@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 import "./App.scss"
 import {Layout} from "./Components/layout";
+import {Intro} from "./Components/intro";
 
 //data
 import {Tag, Team, Month, Transaction} from "./Data/data";
@@ -25,6 +26,7 @@ function App() {
   const [criteria, setCriteria] = useState<Criteria>(defaultCriteria);
   return (
     <div className="App">
+      <Intro/>
       <GlobalContext.Provider value={{criteria, setCriteria}}>
         <Layout/>
       </GlobalContext.Provider>
