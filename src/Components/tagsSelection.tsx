@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-import {Tag} from "../data/data";
+import {Tag} from "../Data/data";
 
 const TagSelectionStyles = styled.div`
     display: flex;

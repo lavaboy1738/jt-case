@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 
+//hooks
+import {useDate, months, Month} from "../Hooks/useDate";
+
 const MonthSelectionStyles = styled.div`
     display: flex;
     align-items: center;
@@ -26,24 +29,23 @@ const MonthSelectionStyles = styled.div`
 `
 
 export const MonthSelection = ()=>{
+    const {selectedMonth, selectMonth} = useDate();
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedMonth, setSelectedMonth] = useState("Jan")
-    const selectMonth = (month: string) => {
-        setSelectedMonth(month)
-        setIsOpen(false)
-    }
 
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    const toggleMonth = (month: Month)=>{
+        selectMonth(month)
+        setIsOpen(x=>!x)
+    }
 
     return (<MonthSelectionStyles>
                 <span className="label">Month:</span>
                 <div className="content">
-                    <button className="active default-button" onClick={()=>setIsOpen(true)}>{selectedMonth}</button>
+                    <button className="active default-button" onClick={()=>toggleMonth(selectedMonth)}>{selectedMonth}</button>
                     {
                         isOpen? <div className="months-window">
                             {
                                 months.map((month)=>{
-                                    return <button className={`default-button ${selectedMonth === month? "active": ""}`} key={month} onClick={()=>selectMonth(month)} >{month}</button>
+                                    return <button className={`default-button ${selectedMonth === month? "active": ""}`} key={month} onClick={()=>toggleMonth(month)} >{month}</button>
                                 })
                             }
                         </div>

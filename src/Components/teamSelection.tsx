@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import {Team} from "../data/data";
+import {Team} from "../Data/data";
 
 const TeamSelectionStyles = styled.div`
     display: flex;
@@ -27,7 +27,7 @@ export const TeamSelection = ()=>{
 
     return(
         <TeamSelectionStyles>
-                <span className="label">Tags:</span>
+                <span className="label">Teams:</span>
                 <div className="content">
                     {
                         teams.map((team)=>{
