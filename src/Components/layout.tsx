@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+//components
+import {Top} from "./top";
+import {Bottom} from "./bottom";
+
 const LayoutStyles = styled.div`
     border: 2px solid var(--seagreen);
     padding: 30px;
@@ -11,21 +15,13 @@ const LayoutStyles = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    .top{
-        height: 30%;
-        border: 1px solid red;
-    }
-    .bottom{
-        height: 60%;
-        border: 1px solid black;
-    }
 `
 
 export const Layout = ()=>{
     return(
         <LayoutStyles>
-            <div className="top"></div>
-            <div className="bottom"></div>
+            <Top/>
+            <Bottom/>
         </LayoutStyles>
     )
 }
