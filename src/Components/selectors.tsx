@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 //components
-import {DefaultButton} from "./defaultButton";
+import {MonthSelection} from "./monthSelection";
 
 const SelectorsStyles = styled.div`
     width: 70%;
@@ -13,10 +13,6 @@ const SelectorsStyles = styled.div`
     .label{
         display: inline-block;
         width: 70px;
-    }
-    .month{
-        display: flex;
-        align-items: center;
     }
     .tags{
         display: flex;
@@ -32,28 +28,24 @@ const SelectorsStyles = styled.div`
 `
 
 export const Selectors = ()=>{
+
     return(
         <SelectorsStyles>
-            <div className="month">
-                <span className="label">Month:</span>
-                <div className="content">
-                    <DefaultButton text="Jan" active={false}/>
-                </div>
-            </div>
+            <MonthSelection/>
             <div className="tags">
                 <span className="label">Tags:</span>
                 <div className="content">
-                    <DefaultButton text="coffee" active={false}/>
-                    <DefaultButton text="movies" active={true}/>
-                    <DefaultButton text="utils" active={false}/>
+                    <button className="default-button" >coffee</button>
+                    <button className="default-button" >movies</button>
+                    <button className="default-button" >utils</button>
                 </div>
             </div>
             <div className="teams">
                 <span className="label">Teams:</span>
                 <div className="content">
-                    <DefaultButton text="Bruins" active={false}/>
-                    <DefaultButton text="Raptors" active={false}/>
-                    <DefaultButton text="Celtics" active={false}/>
+                    <button className="default-button" >Bruins</button>
+                    <button className="default-button" >Raptors</button>
+                    <button className="default-button" >Celtics</button>
                 </div>
             </div>
         </SelectorsStyles>

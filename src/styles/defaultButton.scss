@@ -1,0 +1,12 @@
+.default-button{
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: 1px solid var(--seagreen);
+    cursor: pointer;
+    border-radius: 7px;
+    &.active{
+        background-color: var(--seagreen);
+        color: white;
+        font-weight: 400;
+    }
+}
