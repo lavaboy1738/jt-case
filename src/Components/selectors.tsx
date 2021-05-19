@@ -10,8 +10,8 @@ import {TeamSelection} from "./teamSelection";
 //context
 import {GlobalContext, Criteria} from "../App";
 
-//data 
-import {data, Tag, Team} from "../Data/data";
+//data
+import {data} from "../Data/data";
 
 const SelectorsStyles = styled.div`
     width: 70%;
