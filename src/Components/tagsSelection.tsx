@@ -14,16 +14,15 @@ const tags:Tag[] = ["movies", "coffee", "utils", "food", "groceries"]
 export const TagSelection = ()=>{
     const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
     const toggleTag = (tag: Tag)=>{
-        const copy = selectedTags;
-        const index = selectedTags.indexOf(tag);
+        const copy = [...selectedTags];
+        const index = copy.indexOf(tag);
         if(index !== -1){
             copy.splice(index, 1);
-            setSelectedTags(copy);
+            setSelectedTags(copy)
         }else{
             copy.push(tag)
-            setSelectedTags(copy);
+            setSelectedTags(copy)
         }
-        console.log(selectedTags)
     }
 
     return(
