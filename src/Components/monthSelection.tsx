@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import styled from "styled-components";
 
-//hooks
-import {useDate, months, Month} from "../Hooks/useDate";
+//data and types
+import {months, Month} from "../Data/data";
+
+//context
+import {GlobalContext} from "../App";
 
 const MonthSelectionStyles = styled.div`
     display: flex;
@@ -29,11 +32,13 @@ const MonthSelectionStyles = styled.div`
 `
 
 export const MonthSelection = ()=>{
-    const {selectedMonth, selectMonth} = useDate();
+    const [selectedMonth, setSelectedMonth] = useState<Month>("Jan")
     const [isOpen, setIsOpen] = useState(false);
+    const {criteria, setCriteria} = useContext(GlobalContext);
 
     const toggleMonth = (month: Month)=>{
-        selectMonth(month)
+        setSelectedMonth(()=>month)
+        setCriteria(()=>{return {...criteria, month}})
         setIsOpen(x=>!x)
     }
 

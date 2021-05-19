@@ -1,6 +1,7 @@
+//types
 export type Tag = "coffee" | "movies" | "utils" | "food" | "groceries";
 export type Team = "Bruins" | "Raptors" | "Celtics";
-
+export type Month = "Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul" | "Aug" | "Sep" | "Oct" | "Nov" | "Dec"
 export type Transaction = {
 	date: String,
 	amountInCents: Number,
@@ -8,6 +9,12 @@ export type Transaction = {
 	teams: Team[]
 }
 
+//constants
+export const months:Month[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+export const tags:Tag[] = ["movies", "coffee", "utils", "food", "groceries"]
+export const teams: Team[] = ["Bruins", "Raptors", "Celtics"]
+
+//data
 export const data: Transaction[] = [
     {
         date: "2021-03-18 2:03:04",
