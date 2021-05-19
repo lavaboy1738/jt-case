@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import styled from "styled-components";
+import moment from "moment";
 
 //components
 import {MonthSelection} from "./monthSelection";
@@ -7,7 +8,10 @@ import {TagSelection} from "./tagsSelection";
 import {TeamSelection} from "./teamSelection";
 
 //context
-import {GlobalContext} from "../App";
+import {GlobalContext, Criteria} from "../App";
+
+//data 
+import {data, Tag, Team} from "../Data/data";
 
 const SelectorsStyles = styled.div`
     width: 70%;
@@ -31,12 +35,45 @@ const SelectorsStyles = styled.div`
 
 export const Selectors = ()=>{
     const {criteria, setCriteria} = useContext(GlobalContext);
+
+    //this function filters the transactions according to the criteria selected, then update the context
+    const filterTransactions = (criteria: Criteria)=>{
+        const checkArrs = (checked: String[] , criteriaArr: String[])=>{
+            let result = false;
+            for(let i = 0; i< criteriaArr.length; i++){
+                result = checked.includes(criteriaArr[i])
+            }
+            return result;
+        }
+        const result = data.filter((transaction)=>{
+            //when only date is selected
+            if(criteria.tags.length===0 && criteria.teams.length ===0){
+                return moment(transaction.date,"YYYY-MM-DD jj:mm:ss").format("MMM") === criteria.month
+            }else if(criteria.tags.length ===0) {
+                //when date and teams are selected
+                return (moment(transaction.date,"YYYY-MM-DD jj:mm:ss").format("MMM") === criteria.month
+                    && checkArrs(transaction.teams, criteria.teams))
+            }else if(criteria.teams.length===0){
+                //when date and tags are selected
+                return (moment(transaction.date,"YYYY-MM-DD jj:mm:ss").format("MMM") === criteria.month
+                && checkArrs(transaction.tags, criteria.tags))
+            }else{
+                //when date, tags, and teams are selected
+                return (moment(transaction.date,"YYYY-MM-DD jj:mm:ss").format("MMM") === criteria.month
+                && checkArrs(transaction.tags, criteria.tags)
+                && checkArrs(transaction.teams, criteria.teams)
+                )
+            }
+        })
+        setCriteria(()=>{return {...criteria, transactions: result}})
+    }
+
     return(
         <SelectorsStyles>
             <MonthSelection/>
             <TagSelection/>
             <TeamSelection/>
-            <button className="default-button active refresh" onClick={()=>console.log(criteria)}>Refresh</button>
+            <button className="default-button active refresh" onClick={()=>filterTransactions(criteria)}>Refresh</button>
         </SelectorsStyles>
     )
 }

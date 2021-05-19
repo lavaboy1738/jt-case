@@ -3,21 +3,23 @@ import "./App.scss"
 import {Layout} from "./Components/layout";
 
 //data
-import {Tag, Team, Month} from "./Data/data";
+import {Tag, Team, Month, Transaction} from "./Data/data";
 
-type Criteria = {
+export type Criteria = {
   month: Month,
   tags: Tag[],
-  teams: Team[]
+  teams: Team[],
+  transactions: Transaction[]
 }
 
 const defaultCriteria: Criteria = {
   month: "Jan",
   tags: [],
-  teams: []
+  teams: [],
+  transactions: []
 }
 
-export const GlobalContext = createContext<{criteria: Criteria, setCriteria: any}>({criteria: defaultCriteria, setCriteria: undefined});
+export const GlobalContext = createContext<{criteria: Criteria, setCriteria: any}>({criteria: defaultCriteria, setCriteria: null});
 
 function App() {
   const [criteria, setCriteria] = useState<Criteria>(defaultCriteria);

@@ -3,8 +3,8 @@ export type Tag = "coffee" | "movies" | "utils" | "food" | "groceries";
 export type Team = "Bruins" | "Raptors" | "Celtics";
 export type Month = "Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul" | "Aug" | "Sep" | "Oct" | "Nov" | "Dec"
 export type Transaction = {
-	date: String,
-	amountInCents: Number,
+	date: string,
+	amountInCents: number,
 	tags: Tag[]
 	teams: Team[]
 }
