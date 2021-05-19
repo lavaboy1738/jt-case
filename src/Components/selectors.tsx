@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 //components
 import {MonthSelection} from "./monthSelection";
+import {TagSelection} from "./tagsSelection";
 
 const SelectorsStyles = styled.div`
     width: 70%;
@@ -13,10 +14,6 @@ const SelectorsStyles = styled.div`
     .label{
         display: inline-block;
         width: 70px;
-    }
-    .tags{
-        display: flex;
-        align-items: center;
     }
     .teams{
         display: flex;
@@ -32,14 +29,7 @@ export const Selectors = ()=>{
     return(
         <SelectorsStyles>
             <MonthSelection/>
-            <div className="tags">
-                <span className="label">Tags:</span>
-                <div className="content">
-                    <button className="default-button" >coffee</button>
-                    <button className="default-button" >movies</button>
-                    <button className="default-button" >utils</button>
-                </div>
-            </div>
+            <TagSelection/>
             <div className="teams">
                 <span className="label">Teams:</span>
                 <div className="content">
