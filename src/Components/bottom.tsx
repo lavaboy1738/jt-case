@@ -28,6 +28,7 @@ type DataEntry = {
 
 export const Bottom = ()=>{
     const {criteria} = useContext(GlobalContext);
+    //generate data for the graphs
     const generateData = (transactions: Transaction[])=>{
         const result:DataEntry[] = []
         const totalDaysInMonth = moment(criteria.month, "MMM").daysInMonth();
