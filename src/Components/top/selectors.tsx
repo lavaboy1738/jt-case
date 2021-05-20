@@ -7,13 +7,13 @@ import {TagSelection} from "./tagsSelection";
 import {TeamSelection} from "./teamSelection";
 
 //context
-import {GlobalContext} from "../App";
+import {GlobalContext} from "../../App";
 
 //data
-import {data} from "../Data/data";
+import {data} from "../../Data/data";
 
 //utils
-import {filterTransactions} from "../utils/filterTransactions";
+import {filterTransactions} from "../../utils/filterTransactions";
 
 const SelectorsStyles = styled.div`
     width: 70%;

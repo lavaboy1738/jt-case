@@ -3,10 +3,10 @@ import styled from "styled-components";
 import moment from "moment";
 
 //data and types
-import {months, Month} from "../Data/data";
+import {months, Month} from "../../Data/data";
 
 //context
-import {GlobalContext} from "../App";
+import {GlobalContext} from "../../App";
 
 const MonthSelectionStyles = styled.div`
     display: flex;

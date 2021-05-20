@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 //components
-import {Top} from "./top";
+import {Top} from "./top/top";
 import {Bottom} from "./bottom";
 
 const LayoutStyles = styled.div`

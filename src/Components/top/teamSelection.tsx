@@ -2,10 +2,10 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
 //data
-import {Team, teams} from "../Data/data";
+import {Team, teams} from "../../Data/data";
 
 //context
-import {GlobalContext} from "../App";
+import {GlobalContext} from "../../App";
 
 const TeamSelectionStyles = styled.div`
     display: flex;

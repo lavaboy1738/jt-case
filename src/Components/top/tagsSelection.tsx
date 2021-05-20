@@ -2,10 +2,10 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
 //data
-import {Tag, tags} from "../Data/data";
+import {Tag, tags} from "../../Data/data";
 
 //context
-import {GlobalContext} from "../App";
+import {GlobalContext} from "../../App";
 
 const TagSelectionStyles = styled.div`
     display: flex;

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 //context
-import {GlobalContext} from "../App";
+import {GlobalContext} from "../../App";
 
 const TotalStyles = styled.div`
     width: 25%;
