@@ -4,17 +4,19 @@ import {Layout} from "./Components/layout";
 import {Intro} from "./Components/intro";
 
 //data
-import {Tag, Team, Month, Transaction} from "./Data/data";
+import {Tag, Team, Transaction} from "./Data/data";
 
 export type Criteria = {
-  month: Month,
+  start_date: string,
+  end_date: string,
   tags: Tag[],
   teams: Team[],
   transactions: Transaction[]
 }
 
 const defaultCriteria: Criteria = {
-  month: "Jan",
+  start_date: "",
+  end_date: "",
   tags: [],
   teams: [],
   transactions: []

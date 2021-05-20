@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import {LineChart, Line, Tooltip, XAxis, YAxis} from "recharts";
 import moment from "moment";
@@ -31,12 +31,13 @@ export const Bottom = ()=>{
     //generate data for the graphs
     const generateData = (transactions: Transaction[])=>{
         const result:DataEntry[] = []
-        const totalDaysInMonth = moment(criteria.month, "MMM").daysInMonth();
+        const totalDaysInMonth = moment(criteria.start_date, "YYYY-MM-DD hh:mm:ss").daysInMonth();
+        const selectedMonth = moment(criteria.start_date, "YYYY-MM-DD hh:mm:ss").format("MMM");
         for(let i = 1; i<= totalDaysInMonth; i++){
             let amount = 0;
             let selectedTags:Tag[] = [];
             let selectedTeams: Team[] = [];
-            const date = moment(`2021-${criteria.month}-${i}`).format("YYYY-MM-DD");
+            const date = moment(`2021-${selectedMonth}-${i}`).format("YYYY-MM-DD");
             for(let j=0; j< transactions.length; j++){
                 if(moment(transactions[j].date).format("YYYY-MM-DD") === date){
                     amount += transactions[j].amountInCents

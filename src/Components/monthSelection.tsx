@@ -1,5 +1,6 @@
 import React, {useState, useContext} from "react";
 import styled from "styled-components";
+import moment from "moment";
 
 //data and types
 import {months, Month} from "../Data/data";
@@ -38,7 +39,10 @@ export const MonthSelection = ()=>{
 
     const toggleMonth = (month: Month)=>{
         setSelectedMonth(()=>month)
-        setCriteria(()=>{return {...criteria, month}})
+        const totalDaysInMonth = moment(month, "MMM").daysInMonth();
+        const start_date = moment(`${month}-01`, "MMM-DD").format("YYYY-MM-DD hh:mm:ss");
+        const end_date = moment(`${month}-${totalDaysInMonth}`, "MMM-DD").format("YYYY-MM-DD hh:mm:ss");
+        setCriteria(()=>{return {...criteria, start_date, end_date}})
         setIsOpen(x=>!x)
     }
 
